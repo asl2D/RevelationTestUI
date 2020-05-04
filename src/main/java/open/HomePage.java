@@ -6,26 +6,26 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 /**
- * Р“Р»Р°РІРЅР°СЏ СЃС‚СЂР°РЅРёС†Р° СЃР°Р№С‚Р°.
+ * Главная страница сайта.
  */
 public class HomePage {
     HomePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
-    //СЏС‡РµР№РєР° С‚Р°Р±Р»РёС†С‹ РєСѓСЂСЃ РѕР±РјРµРЅР° - РїРѕРєСѓРїРєР° USD.
+    //ячейка таблицы курс обмена - покупка USD.
     @FindBy(xpath = "(//*[@class='main-page-exchange main-page-info__card']//*[@class='main-page-exchange__rate'])[1]")
     private WebElement exchangeRateUSDBuy;
 
-    //СЏС‡РµР№РєР° С‚Р°Р±Р»РёС†С‹ РєСѓСЂСЃ РѕР±РјРµРЅР° - РїСЂРѕРґР°Р¶Р° USD.
+    //ячейка таблицы курс обмена - продажа USD.
     @FindBy(xpath = "(//*[@class='main-page-exchange main-page-info__card']//*[@class='main-page-exchange__rate'])[2]")
     private WebElement exchangeRateUSDSell;
 
-    //СЏС‡РµР№РєР° С‚Р°Р±Р»РёС†С‹ РєСѓСЂСЃ РѕР±РјРµРЅР° - РїРѕРєСѓРїРєР° EUR.
+    //ячейка таблицы курс обмена - покупка EUR.
     @FindBy(xpath = "(//*[@class='main-page-exchange main-page-info__card']//*[@class='main-page-exchange__rate'])[3]")
     private WebElement exchangeRateEURBuy;
 
-    //СЏС‡РµР№РєР° С‚Р°Р±Р»РёС†С‹ РєСѓСЂСЃ РѕР±РјРµРЅР° - РїСЂРѕРґР°Р¶Р° EUR.
+    //ячейка таблицы курс обмена - продажа EUR.
     @FindBy(xpath = "(//*[@class='main-page-exchange main-page-info__card']//*[@class='main-page-exchange__rate'])[4]")
     private WebElement exchangeRateEURSell;
 
@@ -45,12 +45,12 @@ public class HomePage {
         return Float.parseFloat(exchangeRateEURSell.getText().replace(',', '.'));
     }
 
-    //РџСЂРѕРІРµСЂРєР° РІРµСЂРЅРѕРіРѕ РѕС‚РЅРѕС€РµРЅРёСЏ РєСѓСЂСЃР° РѕР±РјРµРЅР° РґР»СЏ РїРѕРєСѓРїРєРё Рё РїСЂРѕРґР°Р¶Рё USD.
+    //Проверка верного отношения курса обмена для покупки и продажи USD.
     public boolean verifyExchangeRateUSD() {
         return getExchangeRateUSDBuy() < getExchangeRateUSDSell();
     }
 
-    //РџСЂРѕРІРµСЂРєР° РІРµСЂРЅРѕРіРѕ РѕС‚РЅРѕС€РµРЅРёСЏ РєСѓСЂСЃР° РѕР±РјРµРЅР° РґР»СЏ РїРѕРєСѓРїРєРё Рё РїСЂРѕРґР°Р¶Рё EUR.
+    //Проверка верного отношения курса обмена для покупки и продажи EUR.
     public boolean verifyExchangeRateEUR() {
         return getExchangeRateEURBuy() < getExchangeRateEURSell();
     }
