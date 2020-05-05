@@ -29,29 +29,19 @@ public class HomePage {
     @FindBy(xpath = "(//*[@class='main-page-exchange main-page-info__card']//*[@class='main-page-exchange__rate'])[4]")
     private WebElement exchangeRateEURSell;
 
-    private float getExchangeRateUSDBuy() {
+    public float getExchangeRateUSDBuy() {
         return Float.parseFloat(exchangeRateUSDBuy.getText().replace(',', '.'));
     }
 
-    private float getExchangeRateUSDSell() {
+    public float getExchangeRateUSDSell() {
         return Float.parseFloat(exchangeRateUSDSell.getText().replace(',', '.'));
     }
 
-    private float getExchangeRateEURBuy() {
+    public float getExchangeRateEURBuy() {
         return Float.parseFloat(exchangeRateEURBuy.getText().replace(',', '.'));
     }
 
-    private float getExchangeRateEURSell() {
+    public float getExchangeRateEURSell() {
         return Float.parseFloat(exchangeRateEURSell.getText().replace(',', '.'));
-    }
-
-    //Проверка верного отношения курса обмена для покупки и продажи USD.
-    public boolean verifyExchangeRateUSD() {
-        return getExchangeRateUSDBuy() < getExchangeRateUSDSell();
-    }
-
-    //Проверка верного отношения курса обмена для покупки и продажи EUR.
-    public boolean verifyExchangeRateEUR() {
-        return getExchangeRateEURBuy() < getExchangeRateEURSell();
     }
 }
